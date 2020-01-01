@@ -1,0 +1,15 @@
+{
+  "extends": ["plugin:prettier/recommended"],
+  "plugins": ["markdown", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-console": "warn"
+  },
+  "env": {
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 8
+  }
+}
