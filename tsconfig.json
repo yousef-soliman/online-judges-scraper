@@ -12,11 +12,10 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
-    "allowJs": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.json"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
