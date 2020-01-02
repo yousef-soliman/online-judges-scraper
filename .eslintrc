@@ -1,15 +1,20 @@
 {
-  "extends": ["plugin:prettier/recommended"],
-  "plugins": ["markdown", "prettier"],
-  "rules": {
-    "prettier/prettier": "error",
-    "no-console": "warn"
-  },
-  "env": {
-    "es6": true
-  },
-  "parser": "babel-eslint",
+  "root": true,
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 8
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier/@typescript-eslint"
+  ],
+  "rules": {
+    "no-console": 1,
+    "curly": 1,
+    "no-empty": 0
   }
 }
