@@ -1,6 +1,6 @@
 import puppeteer, { Browser } from "puppeteer";
 import { ScraperStartOptions, ScraperOptions } from "./interfaces";
-import { Codeforces } from "../routines";
+import { Codeforces, UVa } from "../routines";
 
 export default class Scraper {
   private _browser!: Browser;
@@ -14,10 +14,22 @@ export default class Scraper {
     try {
       this._browser = await puppeteer.launch({ headless });
 
-      const codeforcesOptions = this._options.codeforces;
+      const { codeforces: codeforcesOptions, uva: uvaOptions } = this._options;
+      const judgesLoginPromises: Promise<void>[] = [];
+
       if (codeforcesOptions) {
-        await Codeforces.login(this._browser, codeforcesOptions.credentials);
+        judgesLoginPromises.push(
+          Codeforces.login(this._browser, codeforcesOptions.credentials)
+        );
       }
+
+      if (uvaOptions) {
+        judgesLoginPromises.push(
+          UVa.login(this._browser, uvaOptions.credentials)
+        );
+      }
+
+      await Promise.all(judgesLoginPromises);
     } catch (error) {
       // TODO: handle puppeteer launch error
     }
