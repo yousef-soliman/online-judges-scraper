@@ -1,1 +1,1 @@
-export { default as codeforces } from "./codeforces";
+export { default as Codeforces } from "./Codeforces";

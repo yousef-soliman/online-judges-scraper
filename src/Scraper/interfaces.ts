@@ -1,4 +1,4 @@
-import { CodeforcesCredentials } from "../routines/codeforces/interfaces";
+import { CodeforcesCredentials } from "../routines/Codeforces/interfaces";
 
 export interface ScraperOptions {
   codeforces?: {
