@@ -7,6 +7,9 @@ import Scraper from "./Scraper";
     },
     uva: {
       credentials: { username: "fake", password: "fake" }
+    },
+    uri: {
+      credentials: { email: "fake@gmail.com", password: "fake" }
     }
   });
   await scraper.start({ headless: false });

@@ -1,5 +1,6 @@
 import { CodeforcesCredentials } from "../routines/Codeforces/interfaces";
 import { UVaCredentials } from "../routines/UVa/interfaces";
+import { URICredentials } from "../routines/URI/interfaces";
 
 export interface ScraperOptions {
   codeforces?: {
@@ -7,6 +8,9 @@ export interface ScraperOptions {
   };
   uva?: {
     credentials: UVaCredentials;
+  };
+  uri?: {
+    credentials: URICredentials;
   };
 }
 
