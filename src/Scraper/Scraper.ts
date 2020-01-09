@@ -3,30 +3,30 @@ import { IScraperStartOptions, IScraperOptions } from "./interfaces";
 import { Codeforces, UVa, URI } from "../routines";
 
 export default class Scraper {
-  private _browser!: Browser;
-  private _options: IScraperOptions;
+  private browser!: Browser;
+  private options: IScraperOptions;
 
   constructor(options: IScraperOptions = {}) {
-    this._options = options;
+    this.options = options;
   }
 
   async start({ headless = true }: IScraperStartOptions = {}): Promise<void> {
     try {
-      this._browser = await puppeteer.launch({ headless });
+      this.browser = await puppeteer.launch({ headless });
 
-      const { codeforces, uva, uri } = this._options;
+      const { codeforces, uva, uri } = this.options;
       const logins: Promise<void>[] = [];
 
       if (codeforces) {
-        logins.push(Codeforces.login(this._browser, codeforces.credentials));
+        logins.push(Codeforces.login(this.browser, codeforces.credentials));
       }
 
       if (uva) {
-        logins.push(UVa.login(this._browser, uva.credentials));
+        logins.push(UVa.login(this.browser, uva.credentials));
       }
 
       if (uri) {
-        logins.push(URI.login(this._browser, uri.credentials));
+        logins.push(URI.login(this.browser, uri.credentials));
       }
 
       await Promise.all(logins);
