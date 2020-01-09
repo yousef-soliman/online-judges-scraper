@@ -1,19 +1,19 @@
-import { CodeforcesCredentials } from "../routines/Codeforces/interfaces";
-import { UVaCredentials } from "../routines/UVa/interfaces";
-import { URICredentials } from "../routines/URI/interfaces";
+import { ICodeforcesCredentials } from "../routines/Codeforces/interfaces";
+import { IUVaCredentials } from "../routines/UVa/interfaces";
+import { IURICredentials } from "../routines/URI/interfaces";
 
-export interface ScraperOptions {
+export interface IScraperOptions {
   codeforces?: {
-    credentials: CodeforcesCredentials;
+    credentials: ICodeforcesCredentials;
   };
   uva?: {
-    credentials: UVaCredentials;
+    credentials: IUVaCredentials;
   };
   uri?: {
-    credentials: URICredentials;
+    credentials: IURICredentials;
   };
 }
 
-export interface ScraperStartOptions {
+export interface IScraperStartOptions {
   headless?: boolean;
 }

@@ -1,9 +1,9 @@
 import { Browser } from "puppeteer";
-import { CodeforcesCredentials } from "./interfaces";
+import { ICodeforcesCredentials } from "./interfaces";
 
 const login = async (
   browser: Browser,
-  { handle, password }: CodeforcesCredentials
+  { handle, password }: ICodeforcesCredentials
 ): Promise<void> => {
   const loginPage = await browser.newPage();
 

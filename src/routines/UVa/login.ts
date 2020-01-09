@@ -1,9 +1,9 @@
 import { Browser } from "puppeteer";
-import { UVaCredentials } from "./interfaces";
+import { IUVaCredentials } from "./interfaces";
 
 const login = async (
   browser: Browser,
-  { username, password }: UVaCredentials
+  { username, password }: IUVaCredentials
 ): Promise<void> => {
   const loginPage = await browser.newPage();
 

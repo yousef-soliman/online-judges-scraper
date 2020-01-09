@@ -1,4 +1,4 @@
-export interface CodeforcesCredentials {
+export interface ICodeforcesCredentials {
   handle: string;
   password: string;
 }

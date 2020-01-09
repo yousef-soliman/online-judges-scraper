@@ -1,4 +1,4 @@
-export interface URICredentials {
+export interface IURICredentials {
   email: string;
   password: string;
 }

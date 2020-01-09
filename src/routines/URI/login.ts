@@ -1,9 +1,9 @@
 import { Browser } from "puppeteer";
-import { URICredentials } from "./interfaces";
+import { IURICredentials } from "./interfaces";
 
 const login = async (
   browser: Browser,
-  { email, password }: URICredentials
+  { email, password }: IURICredentials
 ): Promise<void> => {
   const loginPage = await browser.newPage();
 

@@ -1,4 +1,4 @@
-export interface UVaCredentials {
+export interface IUVaCredentials {
   username: string;
   password: string;
 }

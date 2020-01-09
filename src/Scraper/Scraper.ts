@@ -1,16 +1,16 @@
 import puppeteer, { Browser } from "puppeteer";
-import { ScraperStartOptions, ScraperOptions } from "./interfaces";
+import { IScraperStartOptions, IScraperOptions } from "./interfaces";
 import { Codeforces, UVa, URI } from "../routines";
 
 export default class Scraper {
   private _browser!: Browser;
-  private _options: ScraperOptions;
+  private _options: IScraperOptions;
 
-  constructor(options: ScraperOptions = {}) {
+  constructor(options: IScraperOptions = {}) {
     this._options = options;
   }
 
-  async start({ headless = true }: ScraperStartOptions = {}): Promise<void> {
+  async start({ headless = true }: IScraperStartOptions = {}): Promise<void> {
     try {
       this._browser = await puppeteer.launch({ headless });
 
