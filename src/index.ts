@@ -4,9 +4,9 @@ import Scraper from "./Scraper";
   await Scraper.run({
     headless: false,
     judges: {
-      codeforces: { handle: "fake", password: "fake" },
-      uva: { username: "fake", password: "fake" },
-      uri: { email: "fake@gmail.com", password: "fake" }
+      Codeforces: { username: "fake", password: "fake" },
+      UVa: { username: "fake", password: "fake" },
+      URI: { username: "fake@gmail.com", password: "fake" }
     }
   });
 })();

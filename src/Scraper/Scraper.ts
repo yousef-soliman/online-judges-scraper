@@ -1,6 +1,6 @@
 import puppeteer, { Browser } from "puppeteer";
+import { Codeforces, UVa, URI } from "../judges";
 import { IScraperOptions } from "./interfaces";
-import { Codeforces, UVa, URI } from "../routines";
 
 export default class Scraper {
   private constructor(private browser: Browser) {}
@@ -8,21 +8,21 @@ export default class Scraper {
   public static async run(options: IScraperOptions): Promise<Scraper> {
     const { headless = true, judges } = options;
     try {
+      // TODO: establish relationship between judges and scraper
       const browser = await puppeteer.launch({ headless });
-
       const scraper = new Scraper(browser);
+
       const logins: Promise<void>[] = [];
-
-      if (judges?.codeforces) {
-        logins.push(Codeforces.login(browser, judges?.codeforces));
+      if (judges?.Codeforces) {
+        logins.push(new Codeforces(browser).login(judges.Codeforces));
       }
 
-      if (judges?.uva) {
-        logins.push(UVa.login(browser, judges?.uva));
+      if (judges?.UVa) {
+        logins.push(new UVa(browser).login(judges.UVa));
       }
 
-      if (judges?.uri) {
-        logins.push(URI.login(browser, judges?.uri));
+      if (judges?.URI) {
+        logins.push(new URI(browser).login(judges.URI));
       }
 
       await Promise.all(logins);
