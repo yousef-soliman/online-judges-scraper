@@ -1,37 +1,36 @@
 import puppeteer, { Browser } from "puppeteer";
-import { IScraperStartOptions, IScraperOptions } from "./interfaces";
+import { IScraperOptions } from "./interfaces";
 import { Codeforces, UVa, URI } from "../routines";
 
 export default class Scraper {
-  private browser!: Browser;
-  private options: IScraperOptions;
+  private constructor(private browser: Browser) {}
 
-  constructor(options: IScraperOptions = {}) {
-    this.options = options;
-  }
-
-  async start({ headless = true }: IScraperStartOptions = {}): Promise<void> {
+  public static async run(options: IScraperOptions): Promise<Scraper> {
+    const { headless = true, judges } = options;
     try {
-      this.browser = await puppeteer.launch({ headless });
+      const browser = await puppeteer.launch({ headless });
 
-      const { codeforces, uva, uri } = this.options;
+      const scraper = new Scraper(browser);
       const logins: Promise<void>[] = [];
 
-      if (codeforces) {
-        logins.push(Codeforces.login(this.browser, codeforces.credentials));
+      if (judges?.codeforces) {
+        logins.push(Codeforces.login(browser, judges?.codeforces));
       }
 
-      if (uva) {
-        logins.push(UVa.login(this.browser, uva.credentials));
+      if (judges?.uva) {
+        logins.push(UVa.login(browser, judges?.uva));
       }
 
-      if (uri) {
-        logins.push(URI.login(this.browser, uri.credentials));
+      if (judges?.uri) {
+        logins.push(URI.login(browser, judges?.uri));
       }
 
       await Promise.all(logins);
+
+      return scraper;
     } catch (error) {
       // TODO: handle puppeteer launch error
+      throw new Error();
     }
   }
 }

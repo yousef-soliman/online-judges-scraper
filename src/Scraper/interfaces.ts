@@ -3,17 +3,10 @@ import { IUVaCredentials } from "../routines/UVa/interfaces";
 import { IURICredentials } from "../routines/URI/interfaces";
 
 export interface IScraperOptions {
-  codeforces?: {
-    credentials: ICodeforcesCredentials;
-  };
-  uva?: {
-    credentials: IUVaCredentials;
-  };
-  uri?: {
-    credentials: IURICredentials;
-  };
-}
-
-export interface IScraperStartOptions {
   headless?: boolean;
+  judges?: {
+    codeforces?: ICodeforcesCredentials;
+    uva?: IUVaCredentials;
+    uri?: IURICredentials;
+  };
 }
