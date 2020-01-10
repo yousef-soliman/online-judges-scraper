@@ -5,6 +5,13 @@ class UVa extends Judge {
   async login(credentials: IJudgeCredentials): Promise<void> {
     const loginPage = await this.browser.newPage();
 
+    //should be before goto function
+    loginPage.on("dialog", dialog => {
+      if (dialog.message().includes("Incorrect")) {
+        dialog.accept();
+      }
+    });
+
     await loginPage.goto(
       "https://onlinejudge.org/index.php?option=com_comprofiler&task=login",
       { waitUntil: "domcontentloaded" }

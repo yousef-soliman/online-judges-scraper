@@ -30,7 +30,15 @@ class Codeforces extends Judge {
     );
 
     await new Promise(resolve => loginPage.once("domcontentloaded", resolve));
+
     // TODO: handle failed login "error for__password"
+    await loginPage.evaluate(() => {
+      const qs = document.querySelector.bind(document);
+      const errorPassword = qs(".for__password");
+      if (errorPassword) {
+      } else {
+      }
+    });
 
     await loginPage.close();
   }

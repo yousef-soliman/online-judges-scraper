@@ -30,7 +30,15 @@ class URI extends Judge {
     );
 
     await new Promise(resolve => loginPage.once("domcontentloaded", resolve));
+
     // TODO: handle failed login "alert"
+    await loginPage.evaluate(() => {
+      const qs = document.querySelector.bind(document);
+      const errorPassword = qs(".iziToast-message");
+      if (errorPassword) {
+      } else {
+      }
+    });
 
     await loginPage.close();
   }
