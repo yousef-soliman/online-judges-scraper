@@ -9,5 +9,6 @@ git:
   depth: 1
 
 install:
-  - npm install
+  - npm ci
+  - npm run lint
   - npm run build
